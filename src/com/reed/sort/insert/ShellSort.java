@@ -1,7 +1,8 @@
 package com.reed.sort.insert;
 
 /**
- * @author reed 希尔排序（不稳定排序）
+ * @author reed 
+ * 希尔排序（不稳定排序）
  * 先选取一个小于n的整数d(i)（称之为步长），然后把排序表中的n个记录分为d(i)个组。
  * 从第一个记录开始，间隔为d(i)的记录为同一个组，各组内进行直接插入排序，一趟之后，间隔d(i)的记录有序。
  * 随着有序性的改善，减小步长d(i)，重复进行，直到d(i)=1，使得间隔为1的记录有序，也就使整体达到了有序
@@ -11,9 +12,10 @@ public class ShellSort {
 	public static void main(String[] args) {
 		int[] r = new int[] { 36, 20, 18, 10, 60, 25, 30, 18, 12, 56 };// 待排序数组
 		int[] d = new int[] { 5, 3, 1 };// 步长增量
-		int[] result = sort(r, d);
-		for (int i = 0; i < result.length; i++)
-			System.out.print(result[i] + " ");
+		sort(r, d);
+		System.out.print("结果是：");
+		for (int i = 0; i < r.length; i++)
+			System.out.print(r[i] + " ");
 	}
 
 	/**
@@ -23,7 +25,7 @@ public class ShellSort {
 	 * @param d 步长增量
 	 * @return
 	 */
-	public static int[] sort(int[] r, int d[]) {
+	public static void sort(int[] r, int d[]) {
 		for (int k = 0; k < d.length; k++) {
 			int h = d[k];
 			for (int i = h; i < r.length; i++) {
@@ -35,9 +37,11 @@ public class ShellSort {
 					}
 					r[j + h] = temp;
 				}
+				for (int m = 0; m < r.length; m++)
+					System.out.print(r[m] + " ");
+				System.out.println();
 			}
 		}
-		return r;
 	}
 
 }
